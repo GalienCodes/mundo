@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  font-family: "Poppins", "sans-serif";
+}
+
+.footer{
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom:0 !important;
+  /* margin-top: auto!important; */
+  
+  }
