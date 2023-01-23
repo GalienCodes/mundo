@@ -1,10 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { useGlobalState } from '../../store'
-import Card from './Card'
 import Section from './Section'
-import Electronics from './Electronics.'
-import Toys from './Toys'
 
 const Products = () => {
   const [products] = useGlobalState('products')
@@ -13,7 +9,12 @@ const Products = () => {
   const [toys] = useGlobalState('toys')
 
   return (
-    <div className='pt-10'>
+    <div className='absolute left-0 right-0 top-[24%]'>
+          <div className='max-w-4xl mx-auto  flex flex-col justify-center items-center pl-4 px-4 pb-8'>
+              <h1 className='text-2xl sm:text-3xl font-black text-green-400 py-2 text-center'>Let's Shop on Mundo Market</h1>
+              <p>Pay faster , get it delivered  faster!</p>
+          </div>
+
         
          {electronics && clothing && toys && (
           <>   
