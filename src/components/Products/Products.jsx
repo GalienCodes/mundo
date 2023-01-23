@@ -13,7 +13,7 @@ const Products = () => {
   const [toys] = useGlobalState('toys')
 
   return (
-    <div className=''>
+    <div className='pt-10'>
         
          {electronics && clothing && toys && (
           <>   

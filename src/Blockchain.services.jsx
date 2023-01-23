@@ -1,6 +1,6 @@
 import Web3 from 'web3'
 import { getGlobalState, setGlobalState } from './store'
-import { toast } from 'react-toastify'
+import { toast } from 'react-hot-toast'
 import abi from './abis/Mundo.json'
 
 export const contractAddress = '0x769136C89Fd25aC60380cAa58b010E8C53c8B6Cb'
@@ -16,7 +16,6 @@ const connectWallet = async () => {
     if (!ethereum) return toast.error('Please install Metamask', 'red')
     const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
     setGlobalState('connectedAccount', accounts[0]?.toLowerCase())
-    // getAllNFTs()
     window.location.reload()
   } catch (error) {
     console.log(error.message)
@@ -40,7 +39,7 @@ const isWallectConnected = async () => {
     if (accounts.length) {
       setGlobalState('connectedAccount', accounts[0]?.toLowerCase())
     } else {
-      console.log('No accounts found.')
+      toast.error('Please install Metamask')
      
       setGlobalState('connectedAccount','')
 
