@@ -1,28 +1,33 @@
-import { useEffect } from "react";
-import { ToastContainer } from "react-toastify";
-import { isWallectConnected } from "./Blockchain.services";
+import { useEffect, useState } from "react";
+import  { Toaster } from 'react-hot-toast';
+import { Route, Routes } from "react-router-dom";
+import { getEtheriumContract, isWallectConnected, listProduct } from "./Blockchain.services";
+import Home from "./components/Home";
 import NavBar from "./components/NavBar";
+import Product from "./components/Product";
 
 function App() {
+  const [loaded, setLoaded] = useState(true)
 
-  useEffect(async () => {
-   console.log('hello');
+  useEffect(() => {
+    const loadData = async () => {
+      await isWallectConnected();
+      await getEtheriumContract()
+      await listProduct()
+    }
+    loadData()
   }, [])
 
   return (
     <div >
       <NavBar/>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      {loaded ? (
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/proposal/:id" element={<Product/>} />
+        </Routes>
+      ) : null}
+      <Toaster />
     </div>
   );
 }
