@@ -7,7 +7,8 @@
       "image": "https://ss7.vzw.com/is/image/VerizonWireless/iphone-14-pro-deep-purple-fall22-a?hei=400&fmt=webp",
       "price": "1",
       "rating": 4,
-      "stock": 10
+      "stock": 10,
+      "description":"The iPhone 14 and iPhone 14 Plus feature a 6.1-inch (15 cm) and 6.7-inch (17 cm) display, improvements to the rear-facing camera, and satellite connectivity for ...A magical new way to interact with iPhone. A vital new safety feature designed to save lives. An innovative 48MP camera for mind-blowing detail."
     },
     {
       "id": 2,
@@ -16,7 +17,8 @@
       "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6450/6450853cv7d.jpg",
       "price": "2",
       "rating": 5,
-      "stock": 6
+      "stock": 6,
+      "description":"Announced in January 2023, the MacBook Pro is brand new. The previous MacBook Pro models with chips from the M1 family were released in October 2021, but before  The Apple M1 chip redefines the 13-inch MacBook Pro. Featuring an 8-core CPU that flies through complex workflows in photography, coding, video editing"
     },
     {
       "id": 3,
@@ -25,7 +27,8 @@
       "image": "https://i.etsystatic.com/29072056/r/il/1f7ceb/4103839229/il_fullxfull.4103839229_kje2.jpg",
       "price": "0.25",
       "rating": 2,
-      "stock": 24
+      "stock": 24,
+      "description":"Atari has teamed up with sustainability-focused footwear brand Cariuma to produce a line of retro gaming sneakers. "
     },
     {
       "id": 4,
@@ -34,7 +37,8 @@
       "image": "https://www.highsnobiety.com/static-assets/thumbor/0JF865q_cG7MRaHmhMvuIdI2uz8=/1600x1067/www.highsnobiety.com/static-assets/wp-content/uploads/2021/03/16145358/main1.jpg",
       "price": "0.25",
       "rating": 5,
-      "stock": 3
+      "stock": 3,
+      "description":"Get a Pair of Sneakers, Plant 2 Trees. Nurturing the planet is a cause that's very dear to us at Cariuma. That's why we decided to start our own"
     },
     {
       "id": 5,
@@ -43,16 +47,18 @@
       "image": "https://ipfs.io/ipfs/QmTYEboq8raiBs7GTUg2yLXB3PMz6HuBNgNfSZBx5Msztg/sunglasses.jpg",
       "price": "0.10",
       "rating": 4,
-      "stock": 12
+      "stock": 12,
+      "description":"After purchasing you will have a link to download the original file nft, nftartwork, gif, digitalart, artwork, ,photography, glasses, girl, woman, curly "
     },
     {
       "id": 6,
-      "name": "Watch",
+      "name": "Meta Jacket",
       "category": "clothing",
-      "image": "https://ipfs.io/ipfs/QmTYEboq8raiBs7GTUg2yLXB3PMz6HuBNgNfSZBx5Msztg/watch.jpg",
+      "image": "https://cdn.shopify.com/s/files/1/0053/7994/8647/files/WEISMAN_JACKET_NFT_A_540x.jpg?v=1643846400",
       "price": "1.25",
       "rating": 4,
-      "stock": 0
+      "stock": 0,
+      "description":"Earn royalty from Meta Jacket NFT and own a jacket IRL ... We're giving away 1 x Meta Jacket NFT to start the 2nd half of 2022! To participate "
     },
     {
       "id": 7,
@@ -61,7 +67,8 @@
       "image": "https://ipfs.io/ipfs/QmTYEboq8raiBs7GTUg2yLXB3PMz6HuBNgNfSZBx5Msztg/cube.jpg",
       "price": "0.05",
       "rating": 4,
-      "stock": 15
+      "stock": 15,
+      "description":" Puzzle cubes are a wildly popular and recognizable style of brain teaser; rotational puzzles created and made famous by the Rubik's cube over 30 years ago.  "
     },
     {
       "id": 8,
@@ -70,7 +77,8 @@
       "image": "https://ipfs.io/ipfs/QmTYEboq8raiBs7GTUg2yLXB3PMz6HuBNgNfSZBx5Msztg/train.jpg",
       "price": "0.20",
       "rating": 4,
-      "stock": 0
+      "stock": 0,
+      "description":"Shop our collection of trains and track sets at Mattel.com. Find all Thomas & Friends trains, track sets and more for toddlers and preschool kids!"
     },
     {
       "id": 9,
@@ -79,7 +87,8 @@
       "image": "https://1.bp.blogspot.com/-8o2x_nE2tc4/YC0K0BbkOeI/AAAAAAADmIU/CLZ47YHdHjMpfXFtNFCYq3NcW1jfhUK6wCPcBGAsYHg/s700/Super%2BPlastic%2BJANKY%2BCrypto%2BArt%2BNFT%2BCollection%2B01.png",
       "price": "0.15",
       "rating": 3,
-      "stock": 12
+      "stock": 12,
+      "description":"@SUPERPLASTIC. World's top creator of animated celebs, vinyl toys & digital collectibles ⚡️ For a disturbingly awesome time follow Vinyl toy brand Superplastic has become well known for their Janky & Guggimon characters. Shop their limited edition collectibles here on StockX."
     }
   ]
 }

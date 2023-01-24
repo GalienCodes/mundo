@@ -12,6 +12,7 @@ contract Mundo {
         uint256 cost;
         uint256 rating;
         uint256 stock;
+        string description;
     }
 
     struct Order {
@@ -42,7 +43,8 @@ contract Mundo {
         string memory _image,
         uint256 _cost,
         uint256 _rating,
-        uint256 _stock
+        uint256 _stock,
+        string memory _description
     ) public onlyOwner {
         // Create Item
         Item memory item = Item(
@@ -52,7 +54,8 @@ contract Mundo {
             _image,
             _cost,
             _rating,
-            _stock
+            _stock,
+            _description
         );
 
         // Add Item to mapping
@@ -89,5 +92,14 @@ contract Mundo {
     function withdraw() public onlyOwner {
         (bool success, ) = owner.call{value: address(this).balance}("");
         require(success);
+    }
+
+      // getters function
+    function getItem(uint256 itemId)
+        external
+        view
+        returns (Item memory)
+    {
+        return items[itemId];
     }
 }

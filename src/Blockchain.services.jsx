@@ -1,9 +1,9 @@
 import Web3 from 'web3'
-import { getGlobalState, setGlobalState } from './store'
+import { ethers } from 'ethers'
+import { getGlobalState, setGlobalState, useGlobalState } from './store'
 import { toast } from 'react-hot-toast'
 import abi from './abis/Mundo.json'
-
-export const contractAddress = '0x769136C89Fd25aC60380cAa58b010E8C53c8B6Cb'
+export const contractAddress = '0x21706208100c6B74DB4B4148A53C7cA9A4394d54'
 const contractABI = abi.abi
 
 const { ethereum } = window
@@ -21,6 +21,20 @@ const connectWallet = async () => {
     console.log(error.message)
   }
 }
+
+const disconnectWallet = async () => {
+  const connectedAccount = getGlobalState('connectedAccount')
+  try {
+    if(connectedAccount){
+      setGlobalState('connectedAccount','')
+      console.log(ethereum.disabled());  
+    window.location.reload()
+    }
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
 
 const isWallectConnected = async () => {
   try {
@@ -77,19 +91,44 @@ const listProduct = async()=>{
   setGlobalState('electronics',(electronics))
   setGlobalState('clothing',clothing)
   setGlobalState('toys',toys)
-
 }
 
-const structuredProduct = (products) => {
-  return products
-    .map((product) => ({
-      id: product.id,
-      price: window.web3.utils.fromWei(product.price),
-      name: product.name,
-      category: product.category,
-      image: product.image,
-      stock: product.stock,
-    }))
+
+
+const buyHandler = async (id,cost) => {
+  const hasBought =getGlobalState('hasBought')
+  const contract = await getEtheriumContract()
+  cost = window.web3.utils.toWei(cost.toString(), 'ether')
+  const buyer = getGlobalState('connectedAccount')
+   await contract.methods.buy(id).send({ from: buyer,value: cost})
+  toast.success("Product bought!")
+  setGlobalState('hasBought',true)
+}
+// get orders
+
+  const fetchDetails = async (item) => {
+    const contract = await getEtheriumContract()
+    const account = getGlobalState('connectedAccount')
+
+    const events = await contract.queryFilter("Buy")
+
+    const orders = events.filter(
+      (event) => event.args.buyer === account && event.args.itemId.toString() == item.id.toString()
+    )
+
+    if (orders.length === 0) return
+
+    const order = await contract.orders(account, orders[0].args.orderId)
+    console.log(order);
+  }
+
+const getSingleProduct= async (id) => {
+  try {
+    const products = getGlobalState('products')
+    return products.find((product) => product.id == id)
+  } catch (error) {
+    reportError(error)
+  }
 }
 
 const reportError = (error) => {
@@ -101,6 +140,11 @@ export {
   connectWallet,
   getEtheriumContract,
   isWallectConnected,
-  listProduct
+  listProduct,
+  disconnectWallet,
+  buyHandler ,
+  fetchDetails,
+  
+  getSingleProduct
   
 }

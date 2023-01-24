@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import gblockcahin from "../assets/gblockchain.png"
-import { connectWallet } from '../Blockchain.services'
+import { connectWallet, disconnectWallet } from '../Blockchain.services'
 import { truncate, useGlobalState } from '../store'
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { MdClose } from 'react-icons/md';
@@ -23,10 +23,16 @@ const NavBar = () => {
           </Link>
           {/* tablet laptop */}
           <div className=''>
-            <ul className='sm:flex justify-center gap-10 text-gray-500 hidden '>
-              <li className='cursor-pointer'>Home</li>
-              <li className='cursor-pointer'>About</li>
-              <li className='cursor-pointer'>My orders</li>
+            <ul className='sm:flex justify-center gap-10 text-gray-500 hidden'>
+              <Link to={'/'}>
+                <li className='cursor-pointer'>Home</li>
+              </Link>
+              <Link to={'/about'}>
+                <li className='cursor-pointer'>About</li>
+              </Link>
+              <Link to={'/orders'}>
+                <li className='cursor-pointer'>My orders</li>
+              </Link>
             </ul>
           </div>
           {/* phone */}
@@ -36,7 +42,7 @@ const NavBar = () => {
                 <li className='cursor-pointer'>About</li>
                 <li className='cursor-pointer'>My orders</li>
                 
-                <button className='bg-green-400 font-medium  px-3 py-2 rounded text-gray-50 my-1'> Disconnect</button>
+                <button className='bg-green-400 font-medium  px-3 py-2 rounded text-gray-50 my-1'onClick={()=>disconnectWallet()}> Disconnect</button>
                 {connectedAccount?
                 ( <button disabled type='button' className='bg-green-400 px-3 py-2 rounded text-gray-50 font-semibold'>
                       {truncate(connectedAccount,6,6,15)}
@@ -48,13 +54,11 @@ const NavBar = () => {
               </ul>
           </div>
 
-            <div className='flex gap-4'>
-
-              <div className="rounded-full shadow-md">
-              </div>
+            <div className='flex gap-4 items-center'>
               {connectedAccount?
-               (<div className='flex gap-2'>
-                 <button disabled type='button' className='hidden sm:block bg-green-400 px-3 py-2 rounded text-gray-50 font-semibold'>
+               (<div className='flex items-center gap-2'>
+                 <button className='bg-green-400 font-medium  px-3 py-2 rounded text-gray-50 my-1'onClick={()=>disconnectWallet()}> Disconnect</button>
+                 <button disabled type='button' className='hidden sm:block bg-green-400 font-medium  px-3 py-2 rounded text-gray-50 my-1'>
                     {truncate(connectedAccount,6,6,15)}
                 </button>
                 <Identicon

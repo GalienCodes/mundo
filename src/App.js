@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { getEtheriumContract, isWallectConnected, listProduct } from "./Blockchain.services";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
+import Orders from "./components/Orders";
 import Product from "./components/Product";
 
 function App() {
@@ -12,8 +13,8 @@ function App() {
   useEffect(() => {
     const loadData = async () => {
       await isWallectConnected();
-      await getEtheriumContract()
       await listProduct()
+      await getEtheriumContract()
     }
     loadData()
   }, [])
@@ -24,7 +25,9 @@ function App() {
       {loaded ? (
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/proposal/:id" element={<Product/>} />
+          <Route path="/product/:id" element={<Product/>} />
+          <Route path="/orders" element={<Orders/>} />
+  
         </Routes>
       ) : null}
       <Toaster />

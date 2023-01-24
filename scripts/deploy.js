@@ -32,6 +32,7 @@ async function main() {
       tokens(items[i].price),
       items[i].rating,
       items[i].stock,
+      items[i].description,
     )
 
     await transaction.wait()

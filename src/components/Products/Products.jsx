@@ -1,5 +1,6 @@
 import React from 'react'
 import { useGlobalState } from '../../store'
+import Loader from '../Loader'
 import Section from './Section'
 
 const Products = () => {
@@ -7,6 +8,7 @@ const Products = () => {
   const [clothing] = useGlobalState('clothing')
   const [electronics] = useGlobalState('electronics')
   const [toys] = useGlobalState('toys')
+  console.log(toys);
 
   return (
     <div className='absolute left-0 right-0 top-[24%]'>
@@ -16,13 +18,13 @@ const Products = () => {
           </div>
 
         
-         {electronics && clothing && toys && (
+         {electronics.length && clothing.length && toys.length ? (
           <>   
             <Section title={"Clothing "} items={clothing} />
             <Section title={"Electronics"} items={electronics} />
             <Section title={"Toys"} items={toys} />
           </>
-          )}
+          ):<Loader/>}
     </div>
   )
 }

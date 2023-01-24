@@ -8,6 +8,7 @@ const { setGlobalState, useGlobalState, getGlobalState } = createGlobalState({
   clothing:[],
   toys:[],
   product: null,
+  hasBought:false
 })
 
 const truncate = (text, startChars, endChars, maxLength) => {
