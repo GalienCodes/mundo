@@ -12,7 +12,6 @@ const NavBar = () => {
   const [connectedAccount] = useGlobalState('connectedAccount')
   const [opened, setOpened] = useState(false)
   const handleOpened = ()=>{
-    console.log("done");
     setOpened(!opened)
   }
   return (
@@ -37,12 +36,16 @@ const NavBar = () => {
           </div>
           {/* phone */}
           <div className={opened?"block": "hidden"}>
-              <ul className='fixed top-0 left-0 bottom-0 flex flex-col shadow-xl overflow-hidden  h-48 w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto'>
-                <li className='cursor-pointer'>Home</li>
-                <li className='cursor-pointer'>About</li>
-                <li className='cursor-pointer'>My orders</li>
-                
-                <button className='bg-green-400 font-medium  px-3 py-2 rounded text-gray-50 my-1'onClick={()=>disconnectWallet()}> Disconnect</button>
+              <ul className='fixed top-0 left-0 bottom-0 gap-3 flex flex-col shadow-xl overflow-hidden  h-48 w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto'>
+              <Link to={'/'}>
+                  <li className='cursor-pointer' onClick={()=>handleOpened()}>Home</li>
+              </Link>
+              <Link to={'/about'}>
+                <li className='cursor-pointer' onClick={()=>handleOpened()}>About</li>
+              </Link>
+              <Link to={'/orders'}>
+                <li className='cursor-pointer' onClick={()=>handleOpened()}>My orders</li>
+              </Link>
                 {connectedAccount?
                 ( <button disabled type='button' className='bg-green-400 px-3 py-2 rounded text-gray-50 font-semibold'>
                       {truncate(connectedAccount,6,6,15)}

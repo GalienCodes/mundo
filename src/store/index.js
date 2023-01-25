@@ -3,12 +3,14 @@ import { createGlobalState } from 'react-hooks-global-state'
 
 const { setGlobalState, useGlobalState, getGlobalState } = createGlobalState({
   connectedAccount: '',
+  contract: null,
   products: [],
   electronics:[],
   clothing:[],
   toys:[],
   product: null,
-  hasBought:false
+  hasBought:false,
+  myorders:[]
 })
 
 const truncate = (text, startChars, endChars, maxLength) => {

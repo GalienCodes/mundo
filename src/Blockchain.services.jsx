@@ -69,11 +69,31 @@ const getEtheriumContract = async () => {
   if (connectedAccount) {
     const web3 = window.web3
       const contract = new web3.eth.Contract(abi.abi, contractAddress)
-      console.log(contract);
+      setGlobalState('contract',await contract)
       return contract
   } else {
     return getGlobalState('contract')
   }
+}
+
+const getSingleProd =async(id)=>{
+
+  const contract = await getEtheriumContract()
+  const singleProd =await contract.methods.getItem(id).call()
+  setGlobalState('product',singleProd)
+}
+
+const fetchOrders = async () => {
+  const connectedAccount = getGlobalState('connectedAccount')
+  const contract = await getEtheriumContract()
+  const allOrders = []
+  const orderNumber = await contract.methods.orderCount(connectedAccount).call()
+  for(let i = 0; i < orderNumber; i++){
+      const order = await contract.methods.orders(connectedAccount,i+1).call()
+      allOrders.push(order)
+  }
+
+  setGlobalState('myorders',allOrders.reverse())
 }
 
 const listProduct = async()=>{
@@ -85,6 +105,7 @@ const listProduct = async()=>{
     products.push(item)
     setGlobalState('products',item)
   }
+
   const electronics = products.filter((item) => item.category === 'electronics')
   const clothing = products.filter((item) => item.category === 'clothing')
   const toys = products.filter((item) => item.category === 'toys')
@@ -93,44 +114,22 @@ const listProduct = async()=>{
   setGlobalState('toys',toys)
 }
 
-
-
 const buyHandler = async (id,cost) => {
-  const hasBought =getGlobalState('hasBought')
   const contract = await getEtheriumContract()
   cost = window.web3.utils.toWei(cost.toString(), 'ether')
   const buyer = getGlobalState('connectedAccount')
-   await contract.methods.buy(id).send({ from: buyer,value: cost})
-  toast.success("Product bought!")
-  setGlobalState('hasBought',true)
-}
-// get orders
-
-  const fetchDetails = async (item) => {
-    const contract = await getEtheriumContract()
-    const account = getGlobalState('connectedAccount')
-
-    const events = await contract.queryFilter("Buy")
-
-    const orders = events.filter(
-      (event) => event.args.buyer === account && event.args.itemId.toString() == item.id.toString()
-    )
-
-    if (orders.length === 0) return
-
-    const order = await contract.orders(account, orders[0].args.orderId)
-    console.log(order);
+  await contract.methods.buy(id).send({ from: buyer,value: cost})
   }
+  
+  const withdrawFunds = async()=>{
+    const web3 = window.web3
+    const contract = await getEtheriumContract();
+    const balance =web3.eth.getBalance( '0x21706208100c6B74DB4B4148A53C7cA9A4394d54');
+    console.log(balance);
 
-const getSingleProduct= async (id) => {
-  try {
-    const products = getGlobalState('products')
-    return products.find((product) => product.id == id)
-  } catch (error) {
-    reportError(error)
+    await contract.methods.withdraw().call()
+
   }
-}
-
 const reportError = (error) => {
   console.log(error.message)
   throw new Error('No ethereum object.')
@@ -142,9 +141,8 @@ export {
   isWallectConnected,
   listProduct,
   disconnectWallet,
-  buyHandler ,
-  fetchDetails,
-  
-  getSingleProduct
-  
+  buyHandler,
+  getSingleProd,
+  fetchOrders,
+  withdrawFunds
 }
