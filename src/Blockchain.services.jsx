@@ -27,8 +27,7 @@ const disconnectWallet = async () => {
   try {
     if(connectedAccount){
       setGlobalState('connectedAccount','')
-      console.log(ethereum.disabled());  
-    window.location.reload()
+      window.location.reload()
     }
   } catch (error) {
     console.log(error.message)
@@ -92,8 +91,8 @@ const fetchOrders = async () => {
       const order = await contract.methods.orders(connectedAccount,i+1).call()
       allOrders.push(order)
   }
-
   setGlobalState('myorders',allOrders.reverse())
+  return allOrders
 }
 
 const listProduct = async()=>{

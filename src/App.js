@@ -34,9 +34,9 @@ function App() {
           <>
           <Route path="/product/:id" element={<Product />} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/orders" element={<Orders loaded={loaded} setLoaded={setLoaded}/>} />
           </>
           ) : null}
+          <Route path="/orders" element={<Orders loaded={loaded} setLoaded={setLoaded}/>} />
   
         </Routes>
       <Toaster />

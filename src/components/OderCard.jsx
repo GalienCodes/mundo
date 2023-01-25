@@ -2,12 +2,14 @@ import { ethers } from 'ethers';
 import React from 'react'
 import { useGlobalState } from '../store';
 import moment from 'moment'
+import Loader from './Loader';
 
-const OderCard = () => {
-  const [myorders] = useGlobalState('myorders')
+const OderCard = ({myorders}) => {
+  const data = myorders;
+  console.log("data",data);
   return (
     <>
-    {
+    {null?<Loader/>:(
       myorders.map((item,i)=>{
         return (
           <div key={i}>
@@ -24,7 +26,7 @@ const OderCard = () => {
             </div>
           </div>
         )
-      })
+      }))
     }
     </>
   )

@@ -17,7 +17,6 @@ const Product = () => {
         await buyHandler(product?.id,
         ethers.utils.formatUnits(product.cost.toString(), 'ether'))
         toast.success("Product purchased!")
-        window.reload()
         navigate('/orders')
         } catch (error) {
         toast.error('Purchase failed.')
@@ -39,8 +38,8 @@ const Product = () => {
 
   return (
     <div className='max-w-4xl mx-auto pt-24 text-gray-600 mb-10'>
+      {product?.length > 0 ?(
       <div className='mx-4 grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4'>
-         {product?.length > 0 ?(
           <>
             <div className='rounded'>
             <img 
@@ -81,9 +80,8 @@ const Product = () => {
             ):(<p className='py-6 text-red-400'> Sorry, we're currently out of this product</p>)}
           </div>
           </>
-         ):(<Loader/>)}
-        
       </div>
+     ):(<Loader/>)}
     </div>
   )
 }
