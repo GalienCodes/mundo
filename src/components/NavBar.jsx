@@ -7,7 +7,6 @@ import { HiMenuAlt3 } from 'react-icons/hi';
 import { MdClose } from 'react-icons/md';
 import Identicon from 'react-identicons';
 
-
 const NavBar = () => {
   const [connectedAccount] = useGlobalState('connectedAccount')
   const [opened, setOpened] = useState(false)
@@ -87,7 +86,6 @@ const NavBar = () => {
                 </div>
                 )
               }
-
             </div>
           </div>
         </div>

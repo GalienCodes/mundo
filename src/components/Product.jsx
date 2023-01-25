@@ -38,7 +38,7 @@ const Product = () => {
 
   return (
     <div className='max-w-4xl mx-auto pt-24 text-gray-600 mb-10'>
-      {product?.length > 0 ?(
+        {product?.length > 0 ?(
       <div className='mx-4 grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4'>
           <>
             <div className='rounded'>

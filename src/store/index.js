@@ -12,7 +12,6 @@ const { setGlobalState, useGlobalState, getGlobalState } = createGlobalState({
   hasBought:false,
   myorders:[]
 })
-
 const truncate = (text, startChars, endChars, maxLength) => {
   if (text.length > maxLength) {
     let start = text.substring(0, startChars)
